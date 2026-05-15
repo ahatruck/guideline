@@ -1,0 +1,1818 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HƯỚNG DẪN ĐĂNG KÝ CA AHAHUB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #f0fdf4;
+            color: #1f2937;
+        }
+
+        .section-title {
+            background: linear-gradient(90deg, #ea580c 0%, #f97316 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            display: inline-block;
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 6px rgba(234, 88, 12, 0.3);
+            border: 2px solid #fdba74;
+        }
+
+        .step-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            border: 3px solid #ffedd5;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .step-header {
+            background: #fff7ed;
+            padding: 12px 16px;
+            border-bottom: 3px solid #ffedd5;
+            font-weight: 700;
+            color: #c2410c;
+        }
+
+        .img-container {
+            position: relative;
+            overflow: hidden;
+            flex-grow: 1;
+            background: #f9fafb;
+        }
+
+        .img-container img {
+            width: 100%;
+            display: block;
+        }
+
+        .img-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Elements */
+        .pointer {
+            position: absolute;
+            width: 45px;
+            height: 45px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ea580c" stroke="white" stroke-width="1"><path d="M9 11.24V7.5C9 6.12 10.12 5 11.5 5S14 6.12 14 7.5v3.74c1.21-.81 2-2.18 2-3.74C16 5.01 13.99 3 11.5 3S7 5.01 7 7.5c0 1.56.79 2.93 2 3.74zm9.84 4.63l-4.54-2.26c-.17-.07-.35-.11-.54-.11H13v-6c0-.83-.67-1.5-1.5-1.5S10 6.67 10 7.5v10.74l-3.43-.72c-.08-.01-.15-.03-.24-.03-.31 0-.59.13-.79.33l-.79.8 4.94 4.94c.27.27.65.44 1.04.44h6.79c.75 0 1.33-.55 1.44-1.28l.75-5.27c.01-.07.02-.14.02-.21 0-.62-.35-1.16-.89-1.4z"/></svg>');
+            background-size: cover;
+            z-index: 50;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+            transform-origin: top left;
+        }
+
+        .tick-effect {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: rgba(249, 115, 22, 0.2);
+            border: 3px solid #f97316;
+            border-radius: 50%;
+            z-index: 40;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Biến thể Tick Blue - Thừa hưởng và ghi đè màu sắc */
+        .tick-effect.tick-blue {
+            background: rgba(59, 130, 246, 0.2) !important;
+            border-color: #3b82f6 !important;
+        }
+
+        .draw-circle {
+            position: absolute;
+            border: 4px solid #ef4444;
+            border-radius: 50%;
+            z-index: 30;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+        }
+
+        /* -------------------------------------------------------------------------- */
+        /* --- [GIẢI THÍCH THÔNG SỐ CƠ BẢN] --- */
+        /* top: ...% (Toạ độ chiều Dọc) | left: ...% (Toạ độ chiều Ngang) */
+        /* opacity: 1 (Hiện rõ) | opacity: 0 (Ẩn đi) */
+        /* transform: scale(1) (Cỡ chuẩn) | scale(0.8) (Thu nhỏ - hành động click) */
+        /* transform: translate(-50%, -50%) (Căn tâm hiệu ứng vào chính giữa toạ độ) */
+        /* -------------------------------------------------------------------------- */
+
+
+        /* ========================================================================== */
+        /* [SECTION 4.1] - HƯỚNG DẪN ĐĂNG KÝ CA                                       */
+        /* ========================================================================== */
+
+        /* --- PHẦN 1: TRUY CẬP AHAHUB --- */
+        /* [Con trỏ a1-ptr] */
+        @keyframes a1-ptr {
+            0% {
+                top: 95%;
+                left: 95%;
+                /* (1) Bắt đầu từ góc dưới màn hình */
+                transform: scale(1);
+            }
+
+            35%,
+            45% {
+                top: 68%;
+                left: 83%;
+                /* (4) Di chuyển lên và dừng nghỉ ở giữa màn hình */
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(0.8);
+                /* (5) Nhấn tay Click giả lập */
+            }
+
+            75%,
+            100% {
+                top: 20%;
+                left: 82%;
+                /* (6) Bò lên tới đích mục AhaHub và dừng lại */
+                transform: scale(1);
+            }
+        }
+
+        /* [Vòng nháy a1-t1 tại Tài khoản] */
+        /* ptr ở 70%,82% từ 35%→~60% → blink nhanh trong 25% */
+        @keyframes a1-t1 {
+
+            37%,
+            40% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            41%,
+            43% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            44%,
+            47% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            48%,
+            50% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.8);
+            }
+
+            51%,
+            55% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            60% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.8);
+            }
+
+            0%,
+            36%,
+            61%,
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+        }
+
+        /* [Vòng nháy a1-t2 tại AhaHub] */
+        /* ptr đến 20%,82% từ 75%→100% → blink nhanh trong 25% */
+        @keyframes a1-t2 {
+
+            77%,
+            80% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            81%,
+            83% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            84%,
+            87% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            88%,
+            90% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            91%,
+            95% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.8);
+            }
+
+            0%,
+            76% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+        }
+
+        /* --- PHẦN 2.1: XEM DANH SÁCH HUB --- */
+        /* [Con trỏ a21-ptr] */
+        @keyframes a21-ptr {
+
+            0%,
+            10% {
+                top: 17%;
+                left: 30%;
+                /* (1) Đang ở tab Lịch hoạt động */
+                transform: scale(1);
+            }
+
+            20%,
+            34% {
+                top: 17%;
+                left: 75%;
+                /* (2) Di chuyển sang tab Danh sách AhaHub */
+                transform: scale(1);
+            }
+
+            35% {
+                transform: scale(0.8);
+                /* (3) Click chọn tab Danh sách */
+            }
+
+            60%,
+            88% {
+                top: 95%;
+                left: 95%;
+                /* (4) Thu về góc màn hình để không che ảnh mới */
+                opacity: 0;
+            }
+
+            100% {
+                top: 15%;
+                left: 30%;
+                /* (5) Quay lại vị trí đầu để lặp lại vòng lặp */
+                opacity: 1;
+            }
+        }
+
+        /* [Vòng nháy a21-t1 tại tab Danh sách] */
+        /* ptr ở 15%,75% từ 20%→~47% (8s) → blink vừa trong ~27% */
+        @keyframes a21-t1 {
+
+            22%,
+            26% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            27%,
+            29% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            30%,
+            34% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            35%,
+            37% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            38%,
+            43% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            50% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.8);
+            }
+
+            0%,
+            21%,
+            51%,
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+        }
+
+        /* [Ảnh a21-img2 - Hiệu ứng chuyển cảnh] */
+        @keyframes a21-img2 {
+
+            0%,
+            40% {
+                opacity: 0;
+            }
+
+            /* 40% đầu tiên là ảnh nền cũ */
+            45%,
+            90% {
+                opacity: 1;
+            }
+
+            /* Sau đó ảnh Danh sách hiện đè lên */
+            95%,
+            100% {
+                opacity: 0;
+            }
+
+            /* Cuối vòng thì biến mất để quay lại ảnh cũ */
+        }
+
+        /* --- PHẦN 2.2: CHỌN LỊCH HOẠT ĐỘNG --- */
+        /* [Con trỏ a22-ptr] */
+        @keyframes a22-ptr {
+
+            0%,
+            20% {
+                top: 80%;
+                left: 50%;
+                /* (1) Đang ở dưới màn hình */
+                transform: scale(1);
+            }
+
+            30%,
+            90% {
+                top: 8.5%;
+                left: 70%;
+                /* (2) Bò lên chỉ vào mục Lịch hoạt động */
+                transform: scale(1);
+            }
+
+            91% {
+                transform: scale(0.8);
+                /* (3) Nhấn nhẹ xác nhận mục này */
+            }
+
+            100% {
+                top: 80%;
+                left: 50%;
+                /* (4) Quay về vị trí nghỉ */
+                transform: scale(1);
+            }
+        }
+
+        /* [Vòng nháy a22-t1 nháy nhiều lần thu hút] */
+        @keyframes a22-t1 {
+
+            43%,
+            48% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            49%,
+            54% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            55%,
+            59% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            60%,
+            65% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            80% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.8);
+            }
+
+            0%,
+            42%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* --- PHẦN 3: CHỌN NGÀY LÀM VIỆC --- */
+        /* [Con trỏ a3-ptr] */
+        @keyframes a3-ptr {
+
+            0%,
+            30% {
+                top: 7%;
+                left: 14%;
+                /* (1) Vị trí chờ ở góc trái */
+                transform: scale(1);
+            }
+
+            35% {
+                transform: scale(0.8);
+                /* (2) Click nút Chọn ca làm việc */
+            }
+
+            40%,
+            50% {
+                top: 16%;
+                left: 58%;
+                /* (3) Di chuyển đến ngày T.Sáu và đợi */
+                transform: scale(1);
+            }
+
+            60% {
+                transform: scale(0.8);
+                /* (4) Click chọn ngày T.Sáu */
+            }
+
+            100% {
+                top: 50%;
+                left: 88%;
+                /* (5) Quay về vị trí nghỉ */
+                transform: scale(1);
+            }
+        }
+
+        /* ptr ở 8%,13% từ 0%→~38% → blink trong ~38% */
+        @keyframes a3-t1 {
+
+            5%,
+            9% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            10%,
+            12% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            13%,
+            17% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            18%,
+            20% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            21%,
+            29% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            35% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.8);
+            }
+
+            0%,
+            4%,
+            36%,
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+        }
+
+        /* ptr ở 16%,58% từ 40%→~75% → blink trong ~35% */
+        @keyframes a3-t2 {
+
+            42%,
+            46% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            47%,
+            49% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            50%,
+            54% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            55%,
+            57% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            58%,
+            65% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            73% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.8);
+            }
+
+            0%,
+            41%,
+            74%,
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+        }
+
+        /* --- PHẦN 4.1: LỌC THEO HUB --- */
+        /* [Con trỏ a41-ptr-new] */
+        @keyframes a41-ptr-new {
+
+            0%,
+            20% {
+                top: 25%;
+                left: 20%;
+                /* (1) Đang ở nút Tất cả HUB */
+                transform: scale(1);
+            }
+
+            25% {
+                transform: scale(0.8);
+                /* (2) Click để mở bộ lọc */
+            }
+
+            100% {
+                top: 25%;
+                left: 20%;
+                transform: scale(1);
+            }
+        }
+
+        /* ptr ở 25%,20% cả 100% chu kỳ, click at 25% → blink quanh click, hold dài */
+        @keyframes a41-t1-new {
+
+            20%,
+            24% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            25%,
+            27% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            28%,
+            32% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            33%,
+            35% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            36%,
+            70% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            80% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.8);
+            }
+
+            0%,
+            19%,
+            81%,
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+        }
+
+        /* --- PHẦN 4.2: CHỌN VÙNG HOẠT ĐỘNG --- */
+        /* [Con trỏ a42-ptr] */
+        @keyframes a42-ptr {
+
+            0%,
+            25% {
+                top: 75%;
+                left: 85%;
+                /* (1) Đ đang ở chỗ tích chọn Hub */
+                transform: scale(1);
+            }
+
+            20%,
+            25% {
+                top: 75%;
+                left: 15%;
+                /* (1) Đ đang ở chỗ tích chọn Hub */
+                transform: scale(1);
+            }
+
+            30% {
+                transform: scale(0.8);
+                /* (2) Tích chọn Hub */
+            }
+
+            40%,
+            90% {
+                top: 10%;
+                left: 10%;
+                /* (3) Rút tay về để lộ vòng tròn khoanh đỏ bên dưới */
+                opacity: 0;
+            }
+
+            100% {
+                top: 10%;
+                left: 10%;
+                opacity: 1;
+            }
+        }
+
+        @keyframes a42-img2 {
+
+            0%,
+            20% {
+                opacity: 0;
+            }
+
+            25%,
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes a42-circ {
+
+            0%,
+            25% {
+                opacity: 0;
+            }
+
+            30%,
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* --- PHẦN 5.1: CHỌN CA ĐĂNG KÝ --- */
+        /* [Con trỏ a51-ptr-rows] */
+        @keyframes a51-ptr-rows {
+
+            0%,
+            15% {
+                top: 45%;
+                left: 80%;
+                transform: scale(1);
+            }
+
+            /* (1) Chỉ dòng ca 1 */
+            30%,
+            45% {
+                top: 57%;
+                left: 80%;
+                transform: scale(1);
+            }
+
+            /* (2) Chỉ dòng ca 2 */
+            60%,
+            75% {
+                top: 67%;
+                left: 80%;
+                transform: scale(1);
+            }
+
+            /* (3) Chỉ dòng ca 3 */
+            100% {
+                top: 67%;
+                left: 80%;
+                transform: scale(1);
+            }
+        }
+
+        /* ptr ở 67%,80% từ 60%→100% → blink vừa trong 40% */
+        @keyframes a51-t1 {
+
+            62%,
+            66% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            67%,
+            69% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            70%,
+            74% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            75%,
+            77% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            78%,
+            88% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            97% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.8);
+            }
+
+            0%,
+            61%,
+            98%,
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+        }
+
+        /* --- PHẦN 5.2: XÁC NHẬN ĐĂNG KÝ CA --- */
+        /* [Con trỏ a52-ptr-confirm] */
+        @keyframes a52-ptr-confirm {
+
+            0%,
+            20% {
+                top: 56%;
+                left: 64%;
+                /* (1) Đang ở nút Xác nhận lớn */
+                transform: scale(1);
+            }
+
+            25% {
+                transform: scale(0.8);
+                /* (2) Nhấn nút Xác nhận */
+            }
+
+            100% {
+                top: 56%;
+                left: 64%;
+                transform: scale(1);
+            }
+        }
+
+        /* ptr ở 56%,64% cả 100% chu kỳ, click at 25% → blink quanh click, hold dài */
+        @keyframes a52-t1 {
+
+            20%,
+            24% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            25%,
+            27% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            28%,
+            32% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            33%,
+            35% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            36%,
+            68% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            78% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.8);
+            }
+
+            0%,
+            19%,
+            79%,
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+        }
+
+        /* --- PHẦN 5.3: ĐĂNG KÝ NGÀY KHÁC --- */
+        /* [Con trỏ a53-ptr] */
+        @keyframes a53-ptr {
+
+            0%,
+            10% {
+                top: 15%;
+                left: 70%;
+                /* (1) Chỉ vào nút Ngày tiếp theo */
+                transform: scale(1);
+            }
+
+            15% {
+                transform: scale(0.8);
+                /* (2) Click chuyển ngày */
+            }
+
+            16%,
+            40% {
+                top: 34%;
+                left: 78%;
+                /* (3) Phi nước đại tới ca mới */
+                transform: scale(1);
+            }
+
+            41%,
+            50% {
+                top: 34%;
+                left: 78%;
+                transform: scale(0.8);
+                /* (4) Nhấn ngay lập tức */
+            }
+
+            55%,
+            100% {
+                top: 34%;
+                left: 78%;
+                transform: scale(1);
+            }
+        }
+
+        /* ptr ở 34%,78% từ 16%→100%, click at 41-50% → blink quanh click */
+        @keyframes a53-t1 {
+
+            38%,
+            42% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            43%,
+            45% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            46%,
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            51%,
+            53% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            54%,
+            70% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            82% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.8);
+            }
+
+            0%,
+            37%,
+            83%,
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+        }
+
+
+        /* --- PHẦN 6: KIỂM TRA CÁC CA ĐÃ ĐĂNG KÝ --- */
+        /* [Con trỏ a6-ptr] */
+        @keyframes a6-ptr {
+
+            0%,
+            25% {
+                top: 7%;
+                left: 71%;
+                /* (1) Đang ở tab Đã đăng ký */
+                transform: scale(1);
+            }
+
+            30% {
+                transform: scale(0.8);
+                /* (2) Click vào tab này để xem kết quả */
+            }
+
+            100% {
+                top: 50%;
+                left: 85%;
+                transform: scale(1);
+            }
+        }
+
+        /* ptr ở 7%,71% từ 0%→~33%, click at 30% → blink trong 33% */
+        @keyframes a6-t1 {
+
+            5%,
+            9% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            10%,
+            12% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            13%,
+            17% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            18%,
+            20% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            21%,
+            28% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            35% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.8);
+            }
+
+            0%,
+            4%,
+            36%,
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+        }
+
+        /* --- PHẦN 7 & CẢNH BÁO --- */
+        /* [Vòng khoanh a7-circ] */
+        @keyframes a7-circ {
+            0% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+
+            /* Bé lại */
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+
+            /* To ra (nhấp nháy) */
+            100% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+        }
+
+        /* [Vòng cảnh báo warn-circ] */
+        @keyframes warn-circ {
+
+            0%,
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            /* Hiện đỏ rực */
+            55%,
+            95% {
+                opacity: 0;
+            }
+
+            /* Tắt đi */
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+
+        /* ========================================================================== */
+        /* [SECTION 4.2] - HƯỚNG DẪN ĐIỂM DANH                                       */
+        /* ========================================================================== */
+
+        /* --- PHẦN 1: BẮT ĐẦU ĐIỂM DANH --- */
+        /* [Con trỏ b1-ptr] */
+        @keyframes b1-ptr {
+
+            0%,
+            10% {
+                top: 93%;
+                left: 38%;
+                /* (1) Đang ở nút Điểm danh màu xanh */
+                transform: scale(1);
+            }
+
+            25%,
+            50% {
+                top: 61%;
+                left: 33%;
+                /* (2) Chỉ vào vùng điểm danh trung tâm */
+                transform: scale(1);
+            }
+
+            65% {
+                transform: scale(0.8);
+                /* (3) Click điểm danh */
+            }
+
+            100% {
+                top: 90%;
+                left: 50%;
+                transform: scale(1);
+            }
+        }
+
+        /* ptr ở 61%,33% từ 25%→~68%, click at 65% → blink trong 43% */
+        @keyframes b1-t1 {
+
+            27%,
+            31% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            32%,
+            34% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            35%,
+            39% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            40%,
+            42% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            43%,
+            65% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            72% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.8);
+            }
+
+            0%,
+            26%,
+            73%,
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+        }
+
+        /* --- PHẦN 2: XÁC NHẬN ĐIỂM DANH --- */
+        /* [Con trỏ b2-ptr] */
+        @keyframes b2-ptr {
+
+            0%,
+            10% {
+                top: 70%;
+                left: 75%;
+                transform: scale(1);
+            }
+
+            /* (4) Múa tay xuống dưới */
+            30%,
+            40% {
+                top: 43%;
+                left: 65%;
+                /* (5) Dừng lại tại nút Xác nhận */
+                transform: scale(1);
+            }
+
+            45% {
+                transform: scale(0.8);
+                /* (6) Click xác nhận cuối cùng */
+            }
+
+            100% {
+                top: 43%;
+                left: 65%;
+                transform: scale(1);
+            }
+        }
+
+        /* ptr ở 43%,65% từ 30%→100%, click at 45% → blink quanh click, hold dài */
+        @keyframes b2-t1 {
+
+            32%,
+            36% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            37%,
+            39% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            40%,
+            44% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            45%,
+            47% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            48%,
+            75% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            86% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.8);
+            }
+
+            0%,
+            31%,
+            87%,
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+        }
+
+
+        /* ========================================================================== */
+        /* [SECTION 4.3] - HƯỚNG DẪN HỦY ĐĂNG KÝ CA                                  */
+        /* ========================================================================== */
+
+        /* --- PHẦN 1: CHỌN HỦY CA --- */
+        /* [Con trỏ c1-ptr] */
+        @keyframes c1-ptr {
+
+            0%,
+            30% {
+                top: 88%;
+                left: 80%;
+                /* (1) Đang ở dòng ca phía trên */
+                transform: scale(1);
+            }
+
+            40%,
+            50% {
+                top: 38%;
+                left: 80%;
+                /* (2) Di chuyển xuống nút Hủy màu xám */
+                transform: scale(1);
+            }
+
+            55% {
+                transform: scale(0.8);
+                /* (3) Click nút Hủy */
+            }
+
+            100% {
+                top: 38%;
+                /* Giữ con trỏ ở lại vị trí nút Hủy */
+                left: 80%;
+                transform: scale(1);
+            }
+        }
+
+        /* ptr ở 38%,80% từ 40%→100%, click at 55% → blink quanh click, hold dài */
+        @keyframes c1-t1 {
+
+            42%,
+            46% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            47%,
+            49% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            50%,
+            54% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            55%,
+            57% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            58%,
+            78% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            88% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.8);
+            }
+
+            0%,
+            41%,
+            89%,
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+        }
+
+        /* --- PHẦN 2: XÁC NHẬN HỦY --- */
+        /* [Con trỏ c2-ptr] */
+        @keyframes c2-ptr {
+
+            0%,
+            10% {
+                top: 80%;
+                left: 40%;
+                transform: scale(1);
+            }
+
+            /* (1) Điểm chờ */
+            15% {
+                top: 55%;
+                left: 70%;
+                transform: scale(1);
+            }
+
+            /* (2) Giữ nguyên vị trí để chuẩn bị nhấn */
+            40% {
+                top: 55%;
+                left: 70%;
+                transform: scale(1);
+            }
+
+            45% {
+                top: 55%;
+                left: 70%;
+                transform: scale(0.8);
+                /* (3) Click xác nhận Hủy */
+            }
+
+            100% {
+                top: 55%;
+                left: 70%;
+                transform: scale(1);
+            }
+        }
+
+
+        /* ptr ở 55%,70% từ 15%→100%, click at 45% → blink quanh click, hold dài */
+        @keyframes c2-t1 {
+
+            17%,
+            21% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            22%,
+            24% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            25%,
+            29% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+
+            30%,
+            32% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+
+                33%,
+                68% {
+                    opacity: 1;
+                    transform: translate(-50%, -50%) scale(1.5);
+                }
+
+                79% {
+                    opacity: 0;
+                    transform: translate(-50%, -50%) scale(1.8);
+                }
+
+                0%,
+                16%,
+                80%,
+                100% {
+                    opacity: 0;
+                    transform: translate(-50%, -50%) scale(0.5);
+                }
+            }
+
+            .header-bg {
+                background: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="%23ea580c"/><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            }
+    </style>
+</head>
+
+<body class="bg-orange-50 pb-20">
+
+    <header
+        class="bg-[#f97316] text-white py-16 px-6 rounded-b-[40px] shadow-lg mb-12 relative overflow-hidden text-center border-b-8 border-[#ea580c]">
+        <!-- Layer Bản đồ chìm (Phóng to đè sau tiêu đề) -->
+        <div
+            class="absolute inset-0 flex items-center justify-center opacity-[0.08] pointer-events-none transform scale-[2.5] -rotate-6">
+            <svg class="w-full h-full" viewBox="0 0 24 24" fill="white">
+                <path
+                    d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z" />
+            </svg>
+        </div>
+        <!-- Layer Đồng hồ cát chìm (Nằm sau tiêu đề) -->
+        <div
+            class="absolute inset-0 flex items-center justify-center opacity-[0.06] pointer-events-none transform rotate-12 scale-110 translate-x-24">
+            <svg class="w-1/2 h-1/2" viewBox="0 0 24 24" fill="white">
+                <path
+                    d="M6 2v6h.01L6 8.01 10 12l-4 4 .01.01H6V22h12v-5.99h-.01L18 16l-4-4 4-3.99-.01-.01H18V2H6zm10 14.5V20H8v-3.5l4-4 4 4zM8 4h8v3.5l-4 4-4-4V4z" />
+            </svg>
+        </div>
+
+        <div class="max-w-4xl mx-auto relative z-10 animate__animated animate__fadeInDown">
+            <h1 class="text-4xl md:text-6xl font-black text-white mb-6 tracking-tighter uppercase drop-shadow-2xl">
+                HƯỚNG DẪN ĐĂNG KÝ CA AHAHUB
+            </h1>
+            <div class="flex items-center justify-center gap-4 mb-8">
+                <span class="text-4xl filter drop-shadow-md animate__animated animate__bounceIn"
+                    style="transform: scaleX(-1); animation-delay: 0.3s;">🚚</span>
+                <p class="text-xl md:text-2xl font-bold opacity-90 text-orange-50 drop-shadow-md m-0">
+                    Đăng ký ca dễ dàng - Nhận đơn hàng ưu tiên
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-5xl mx-auto px-4 mb-8">
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg shadow-sm">
+            <p class="text-blue-800 font-semibold">
+                <span class="mr-2 text-xl">ℹ️</span>
+                <b>Ghi chú:</b> Các thuật ngữ Hub, zone được sử dụng trong đây được hiểu là vùng hoạt động mà các Bác
+                tài đã đăng ký thành công.
+            </p>
+        </div>
+    </div>
+
+    <main class="max-w-6xl mx-auto px-4">
+
+        <!-- ========================================== -->
+        <!-- SECTION 4.1: HƯỚNG DẪN ĐĂNG KÝ CA -->
+        <!-- ========================================== -->
+        <div class="mb-16">
+            <h2 class="section-title">HƯỚNG DẪN ĐĂNG KÝ CA</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Phần 1 -->
+                <div class="step-card">
+                    <div class="step-header">Phần 1: Truy cập AhaHub</div>
+                    <div class="p-3 text-sm font-medium text-gray-700 bg-white">Bác tài chọn <b>Tài khoản</b> và vào mục
+                        <b>AhaHub</b> trên ứng dụng.
+                    </div>
+                    <div class="img-container">
+                        <img src="Guidline/step1.jpg"
+                            style="object-position: top; object-fit: cover;" alt="Step 1"
+                            onerror="this.src='https://placehold.co/400x800/fed7aa/f97316?text=Step+1'">
+                        <div class="pointer" style="animation: a1-ptr 6s infinite;"></div>
+                        <div class="tick-effect" style="top: 70%; left: 89%; animation: a1-t1 6s infinite;"></div>
+                        <div class="tick-effect" style="top: 22%; left: 88%; animation: a1-t2 6s infinite;"></div>
+                    </div>
+                </div>
+
+                <!-- Phần 2.1 -->
+                <div class="step-card">
+                    <div class="step-header">Phần 2.1: Xem danh sách Hub</div>
+                    <div class="p-3 text-sm font-medium text-gray-700 bg-white">Kiểm tra danh sách các vùng đã đăng ký
+                        tại <b>Danh sách AhaHub</b>.</div>
+                    <div class="img-container">
+                        <img src="Guidline/step2.jpg"
+                            alt="Step 2" onerror="this.src='https://placehold.co/400x800/fed7aa/f97316?text=Step+2'">
+                        <img src="Guidline/step2.1.jpg"
+                            class="img-overlay" style="animation: a21-img2 8s infinite;" alt="Step 2.1"
+                            onerror="this.src='https://placehold.co/400x800/fed7aa/ea580c?text=Step+2.1'">
+                        <div class="pointer" style="animation: a21-ptr 8s infinite;"></div>
+                        <div class="tick-effect" style="top: 19%; left: 80%; animation: a21-t1 8s infinite;"></div>
+                    </div>
+                </div>
+
+                <!-- Phần 2.2 -->
+                <div class="step-card">
+                    <div class="step-header">Phần 2.2: Chọn Lịch hoạt động</div>
+                    <div class="p-3 text-sm font-medium text-gray-700 bg-white">Chọn <b>Lịch hoạt động</b> để bắt đầu
+                        đăng ký ca.</div>
+                    <div class="img-container">
+                        <img src="Guidline/step2.jpg"
+                            alt="Step 2" onerror="this.src='https://placehold.co/400x800/fed7aa/f97316?text=Step+2'">
+                        <div class="pointer" style="animation: a22-ptr 5s infinite;"></div>
+                        <div class="tick-effect" style="top: 10%; left: 75%; animation: a22-t1 5s infinite;"></div>
+                    </div>
+                </div>
+
+                <!-- Phần 3 -->
+                <div class="step-card">
+                    <div class="step-header">Phần 3: Chọn ngày làm việc</div>
+                    <div class="p-3 text-sm font-medium text-gray-700 bg-white"><b>Chọn ca làm việc</b>
+                        và sau đó chọn ngày cần đăng ký ca.</div>
+                    <div class="img-container">
+                        <img src="Guidline/Step3.jpg"
+                            alt="Step 3" onerror="this.src='https://placehold.co/400x800/fed7aa/f97316?text=Step+3'">
+                        <div class="pointer" style="animation: a3-ptr 6s infinite;"></div>
+                        <div class="tick-effect" style="top: 8%; left: 20%; animation: a3-t1 6s infinite;"></div>
+                        <div class="tick-effect tick-blue" style="top: 17%; left: 62%; animation: a3-t2 6s infinite;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phần 4.1 -->
+                <div class="step-card">
+                    <div class="step-header">Phần 4.1: Lọc theo HUB</div>
+                    <div class="p-3 text-sm font-medium text-gray-700 bg-white">Ấn vào <b>Tất cả HUB</b>, màn hình lọc
+                        sẽ hiện ra danh sách các hub, Bác tài có thể chọn 1 hoặc nhiều hub.</div>
+                    <div class="img-container">
+                        <img src="Guidline/Step4.jpg"
+                            alt="Step 4" onerror="this.src='https://placehold.co/400x800/fed7aa/f97316?text=Step+4'">
+                        <div class="pointer" style="animation: a41-ptr-new 5s infinite;"></div>
+                        <div class="tick-effect" style="top: 27%; left: 25%; animation: a41-t1-new 5s infinite;"></div>
+                    </div>
+                </div>
+
+                <!-- Phần 4.2 -->
+                <div class="step-card">
+                    <div class="step-header">Phần 4.2: Chọn vùng hoạt động</div>
+                    <div class="p-3 text-sm font-medium text-gray-700 bg-white">Chọn vùng hoạt động, màn hình sẽ hiển
+                        thị
+                        các ca của vùng đó chờ Bác tài đăng ký.</div>
+                    <div class="img-container">
+                        <img src="Guidline/Step4.1.jpg"
+                            alt="Step 4.1"
+                            onerror="this.src='https://placehold.co/400x800/fed7aa/f97316?text=Step+4.1'">
+                        <img src="Guidline/Step4.2.jpg"
+                            class="img-overlay" style="animation: a42-img2 7s infinite;" alt="Step 4.2"
+                            onerror="this.src='https://placehold.co/400x800/fed7aa/ea580c?text=Step+4.2'">
+                        <div class="draw-circle border-red-500"
+                            style="top: 26%; left: 21%; width: 41%; height: 7%; animation: a42-circ 7s infinite;"></div>
+                        <div class="pointer" style="animation: a42-ptr 7s infinite;"></div>
+                    </div>
+                </div>
+
+                <!-- Phần 5.1 -->
+                <div class="step-card">
+                    <div class="step-header">Phần 5.1: Chọn ca đăng ký</div>
+                    <div class="p-3 text-sm font-medium text-gray-700 bg-white">Sau khi lọc các hub, Bác tài tiến hành
+                        <b>Đăng ký</b> ca mong muốn.
+                    </div>
+                    <div class="img-container">
+                        <img src="Guidline/Step4.5.jpg"
+                            alt="Step 4.5"
+                            onerror="this.src='https://placehold.co/400x800/fed7aa/f97316?text=Step+4.5'">
+                        <div class="pointer" style="animation: a51-ptr-rows 6s infinite;"></div>
+                        <div class="tick-effect tick-blue" style="top: 69%; left: 85%; animation: a51-t1 6s infinite;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phần 5.2 -->
+                <div class="step-card">
+                    <div class="step-header">Phần 5.2: Xác nhận đăng ký ca</div>
+                    <div class="p-3 text-sm font-medium text-gray-700 bg-white">Xác nhận đăng ký.</div>
+                    <div class="img-container bg-white flex items-center justify-center">
+                        <img src="Guidline/step5.0.jpg"
+                            style="object-fit: contain; max-height: 100%;" alt="Step 5.0"
+                            onerror="this.src='https://placehold.co/400x800/fed7aa/f97316?text=Step+5.0'">
+                        <div class="pointer" style="animation: a52-ptr-confirm 5s infinite;"></div>
+                        <div class="tick-effect tick-blue" style="top: 58%; left: 68%; animation: a52-t1 5s infinite;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phần 5.3 -->
+                <div class="step-card">
+                    <div class="step-header">Phần 5.3: Đăng ký ngày khác</div>
+                    <div class="p-3 text-sm font-medium text-gray-700 bg-white">Chọn ngày tiếp theo để lụm thêm ca!
+                    </div>
+                    <div class="img-container">
+                        <img src="Guidline/Step7.jpg"
+                            alt="Step 7" onerror="this.src='https://placehold.co/400x800/fed7aa/f97316?text=Step+7'">
+                        <div class="pointer" style="animation: a53-ptr 6s infinite;"></div>
+                        <div class="tick-effect tick-blue" style="top: 35%; left: 83%; animation: a53-t1 6s infinite;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phần 6 -->
+                <div class="step-card">
+                    <div class="step-header">Phần 6: Kiểm tra các ca đã đăng ký</div>
+                    <div class="p-3 text-sm font-medium text-gray-700 bg-white">Vào mục <b>Đã đăng ký</b> để kiểm tra
+                        các ca mà Bác tài đã đăng ký.<br>
+                        <i class="text-orange-600 block mt-2" style="animation: a42-img2 6s infinite;">Như vậy, Bác tài
+                            đã hoàn tất quá trình đăng ký ca.</i>
+                    </div>
+                    <div class="img-container">
+                        <img src="Guidline/Step8.jpg"
+                            alt="Step 8" onerror="this.src='https://placehold.co/400x800/fed7aa/f97316?text=Step+8'">
+                        <div class="pointer" style="animation: a6-ptr 6s infinite;"></div>
+                        <div class="tick-effect" style="top: 9%; left: 76%; animation: a6-t1 6s infinite;"></div>
+                    </div>
+                </div>
+
+                <!-- Phần 7 -->
+                <div class="step-card">
+                    <div class="step-header">Phần 7: Nhắc nhở ca làm việc</div>
+                    <div class="p-3 text-sm font-medium text-gray-700 bg-white">Tại màn hình chính, hệ thống sẽ nhắc nhẹ
+                        Bác tài thời gian bắt đầu ca và khu vực hoạt động.</div>
+                    <div class="img-container flex justify-center bg-gray-100">
+                        <div class="relative w-full max-sm">
+                            <img src="Guidline/Step11.jpg"
+                                alt="Step 11"
+                                onerror="this.src='https://placehold.co/400x800/fed7aa/f97316?text=Step+11'">
+                            <div class="draw-circle border-orange-500 border-1"
+                                style="top: 4%; left: 50%; width: 95%; height: 13%; animation: a7-circ 2s infinite;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- Kết thúc Grid -->
+
+            <!-- Cảnh Báo nằm riêng một mình ở dưới cho nổi bật -->
+            <div class="step-card border-red-400 bg-red-50 mt-12 w-full">
+                <div class="p-5 flex flex-col md:flex-row items-center md:items-start gap-8">
+                    <div class="flex-shrink-0">
+                        <div class="relative w-48 rounded-xl overflow-hidden shadow-lg border-2 border-red-200">
+                            <img src="Guidline/Step4.5.jpg"
+                                alt="Warning"
+                                onerror="this.src='https://placehold.co/200x400/fee2e2/ef4444?text=Step+4.5'">
+                            <div class="draw-circle border-red-600 border-4 bg-red-500 bg-opacity-20"
+                                style="top: 36%; left: 83%; width: 32%; height: 6%; animation: warn-circ 1.5s infinite;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-left w-full">
+                        <h3 class="text-2xl font-black text-red-700 mb-3 uppercase tracking-wider">⚠️ CẢNH BÁO QUAN
+                            TRỌNG</h3>
+                        <p class="text-red-900 font-bold text-lg mb-4">Phải đăng ký ca trước thời điểm bắt đầu ít nhất 1
+                            tiếng.</p>
+                        <div class="text-red-800 bg-red-100 p-4 rounded-xl border-2 border-red-200 shadow-inner w-full">
+                            <p class="text-sm leading-relaxed">
+                                <b>Ví dụ thực tế:</b> Nếu ca bắt đầu lúc <b>9:00 sáng</b>, Bác tài phải hoàn tất đăng ký
+                                trước <b>7:59 sáng</b>. Sau thời gian này, nút đăng ký sẽ báo <b>"HẾT HẠN"</b>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- Kết thúc Section 4.1 -->
+
+        <!-- ========================================== -->
+        <!-- SECTION 4.2: HƯỚNG DẪN ĐIỂM DANH -->
+        <!-- ========================================== -->
+        <div class="mb-16">
+            <h2 class="section-title">HƯỚNG DẪN ĐIỂM DANH</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Phần 1 -->
+                <div class="step-card">
+                    <div class="step-header">Phần 1: Bắt đầu điểm danh</div>
+                    <div class="p-3 text-sm font-medium text-gray-700 bg-white">Khi đến ca làm việc, màn hình sẽ hiện
+                        thông báo <b>Điểm Danh Ahahub</b>.</div>
+                    <div class="img-container">
+                        <img src="Guidline/step12.jpg"
+                            alt="Step 12" onerror="this.src='https://placehold.co/400x800/fed7aa/f97316?text=Step+12'">
+                        <div class="draw-circle border-orange-500 border-3"
+                            style="top: 63%; left: 31%; width: 65%; height: 9%; animation: a7-circ 5s infinite;"></div>
+                        <div class="pointer" style="animation: b1-ptr 5s infinite;"></div>
+                        <div class="tick-effect tick-blue" style="top: 63%; left: 38%; animation: b1-t1 5s infinite;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phần 2 -->
+                <div class="step-card">
+                    <div class="step-header">Phần 2: Xác nhận Điểm danh</div>
+                    <div class="p-3 text-sm font-medium text-gray-700 bg-white">Bác tài bấm nút <b>Xác nhận</b> để hoàn
+                        tất.
+                    </div>
+                    <div class="img-container">
+                        <img src="Guidline/step13.jpg"
+                            alt="Step 13" onerror="this.src='https://placehold.co/400x800/fed7aa/f97316?text=Step+13'">
+                        <div class="pointer" style="animation: b2-ptr 5s infinite;"></div>
+                        <div class="tick-effect tick-blue" style="top: 44%; left: 70%; animation: b2-t1 5s infinite;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phần 3 -->
+                <div class="step-card">
+                    <div class="step-header">Phần 3: Hoàn thành</div>
+                    <div class="p-3 text-sm font-medium text-gray-700 bg-white leading-relaxed">
+                        <b>Chúc mừng Bác tài đã hoàn thành xong phần điểm danh, hãy luôn duy trì trực tuyến, bật tự động
+                            nhận đơn để dành được sự ưu tiên cao nhất!</b>
+                    </div>
+                    <div class="img-container">
+                        <img src="Guidline/step14.jpg"
+                            alt="Step 14" onerror="this.src='https://placehold.co/400x800/fed7aa/f97316?text=Step+14'">
+                        <div class="draw-circle border-orange-500 border-1"
+                            style="top: 2%; left: 45%; width: 75%; height: 12%; animation: a7-circ 3s infinite;"></div>
+                    </div>
+                </div>
+            </div> <!-- Kết thúc Grid -->
+
+            <!-- Lưu ý quan trọng điểm danh -->
+            <div class="step-card border-orange-400 bg-orange-50 mt-12 w-full">
+                <div class="p-5 flex flex-col md:flex-row items-center md:items-start gap-6">
+                    <div class="text-5xl flex-shrink-0 animate-bounce">📍</div>
+                    <div class="text-left w-full">
+                        <h3 class="text-2xl font-black text-orange-700 mb-3 uppercase tracking-wider">💡 LƯU Ý QUAN
+                            TRỌNG</h3>
+                        <p class="text-orange-900 font-bold text-xl">
+                            Bác tài phải di chuyển vào vùng hoạt động đã đăng ký mới có thể kích hoạt tính năng Điểm
+                            Danh AhaHub.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- Kết thúc Section 4.2 -->
+        <!-- ========================================== -->
+        <!-- SECTION 4.3: HƯỚNG DẪN HỦY ĐĂNG KÝ CA -->
+        <!-- ========================================== -->
+        <div class="mb-16">
+            <h2 class="section-title">HƯỚNG DẪN HỦY ĐĂNG KÝ CA</h2>
+
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded-r-lg shadow-sm">
+                <p class="text-red-800 font-semibold">
+                    <span class="mr-2 text-xl">⚠️</span>
+                    <b>Cảnh báo:</b> Ca đăng ký chỉ có thể được hủy muộn nhất 1 tiếng trước thời điểm ca bắt đầu. Khi ca
+                    đã bị hủy, Bác tài sẽ không còn được nhận bất kỳ đặc quyền nào từ Ahahub.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Phần 1 -->
+                <div class="step-card">
+                    <div class="step-header">Phần 1: Chọn Hủy ca</div>
+                    <div class="p-3 text-sm font-medium text-gray-700 bg-white">Tại tab <b>Đã đăng ký</b>, chọn
+                        <b>Hủy</b> tại ca muốn hủy.
+                    </div>
+                    <div class="img-container">
+                        <img src="Guidline/Step8.jpg"
+                            alt="Step 8" onerror="this.src='https://placehold.co/400x800/fed7aa/f97316?text=Step+8'">
+                        <div class="pointer" style="animation: c1-ptr 5s infinite;"></div>
+                        <div class="tick-effect" style="top: 40%; left: 85%; animation: c1-t1 5s infinite;"></div>
+                    </div>
+                </div>
+
+                <!-- Phần 2 -->
+                <div class="step-card">
+                    <div class="step-header">Phần 2: Xác nhận hủy</div>
+                    <div class="p-3 text-sm font-medium text-gray-700 bg-white">Ấn <b>Hủy đăng ký</b> trên màn hình xác
+                        nhận.</div>
+                    <div class="img-container">
+                        <img src="Guidline/Step9.jpg"
+                            alt="Step 9" onerror="this.src='https://placehold.co/400x800/fed7aa/f97316?text=Step+9'">
+                        <div class="pointer" style="animation: c2-ptr 5s infinite;"></div>
+                        <div class="tick-effect" style="top: 56%; left: 74%; animation: c2-t1 5s infinite;"></div>
+                    </div>
+                </div>
+
+                <!-- Phần 3 -->
+                <div class="step-card">
+                    <div class="step-header">Phần 3: Hủy thành công</div>
+                    <div class="p-3 text-sm font-medium text-gray-700 bg-white">Màn hình báo Hủy đăng ký thành công.
+                    </div>
+                    <div class="img-container">
+                        <img src="Guidline/Step10.jpg"
+                            alt="Step 10" onerror="this.src='https://placehold.co/400x800/fed7aa/f97316?text=Step+10'">
+                        <div class="draw-circle border-red-500 border-1"
+                            style="top: 3%; left: 40%; width: 77%; height: 10%; animation: a7-circ 3s infinite;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="mt-20 text-center py-10 border-t-4 border-orange-300 bg-white shadow-inner">
+        <div class="flex items-center justify-center gap-16 mb-8">
+            <!-- Xe Tải -->
+            <div class="text-6xl filter drop-shadow-lg animate__animated animate__bounceIn"
+                style="animation-delay: 0.5s;">🚚</div>
+            <!-- Thùng hàng -->
+            <div class="text-6xl filter drop-shadow-lg animate__animated animate__bounceIn"
+                style="animation-delay: 0.7s;">📦</div>
+            <!-- Tiền lộc -->
+            <div class="text-6xl filter drop-shadow-lg animate__animated animate__bounceIn"
+                style="animation-delay: 0.9s;">💰</div>
+        </div>
+        <p class="font-black text-3xl mb-4 tracking-wide text-orange-600 uppercase">
+            Chúc bác tài AhaMove một ngày bão đơn!
+        </p>
+        <div
+            class="inline-block bg-gray-900 text-white px-6 py-2 rounded-full text-sm font-bold tracking-widest uppercase">
+            Designed by: Truck Team Ahamove
+        </div>
+    </footer>
+
+</body>
+
+</html>
